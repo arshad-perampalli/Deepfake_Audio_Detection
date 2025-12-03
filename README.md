@@ -1,9 +1,6 @@
 # Deepfake Audio Detection
 
 A machine learning project for detecting deepfake (AI-synthesized) audio vs. real audio using deep learning models and pre-trained transformers.
-
-## Overview
-
 This project implements multiple approaches to classify audio as either fake (AI-generated) or real (authentic). It leverages both custom CNN-based models and state-of-the-art pre-trained transformer models like Wav2Vec2.
 
 ## Features
@@ -98,34 +95,8 @@ The notebook includes:
 4. **Evaluation**: Evaluates on test set and generates performance metrics
 5. **Deployment**: Optionally saves model to Google Drive or creates Streamlit web app
 
-## Model Architecture
-
-### Custom CNN Model
-```
-Input (16000 samples) 
-  ↓
-Conv1d (1→16 channels) + BatchNorm + ReLU
-  ↓
-Conv1d (16→32 channels) + BatchNorm + ReLU
-  ↓
-Conv1d (32→64 channels) + BatchNorm + ReLU
-  ↓
-Flatten → FC (64*feature_size→128) + Dropout
-  ↓
-FC (128→2) → Output [Fake, Real]
-```
-
-### Wav2Vec2-based Model
-Uses Facebook's pre-trained Wav2Vec2 feature extractor with a custom classification head:
-```
-Input Audio → Wav2Vec2 Feature Extractor
-  ↓
-Mean Pooling over temporal dimension
-  ↓
-FC (768→128) + ReLU + Dropout
-  ↓
-FC (128→2) → Output [Fake, Real]
-```
+## Methodology
+![Image](https://github.com/arshad-perampalli/Deepfake_Audio_Detection/blob/main/Methodology.png?raw=true)
 
 ## Training Configuration
 
@@ -145,24 +116,14 @@ The notebook evaluates models using:
 - **Precision, Recall, F1-Score**: Per-class performance metrics
 - **Classification Report**: Detailed breakdown of metrics
 
-## File Structure
+  ![Image2](https://github.com/arshad-perampalli/Deepfake_Audio_Detection/blob/main/output2.png?raw=true)
 
-```
-Deepfake_Audio_Detection/
-├── Deepfake_Audiou_Detection.ipynb    # Main notebook with full pipeline
-├── README.md                           # This file
-└── kaggle.json                        # Kaggle API credentials (add yourself)
-```
+  ---
 
-## Future Improvements
+  ![Image3](https://github.com/arshad-perampalli/Deepfake_Audio_Detection/blob/main/Screenshot%202025-06-28%20152344.png?raw=true)
 
-- [ ] Implement attention mechanisms for audio classification
-- [ ] Add support for different audio formats and sample rates
-- [ ] Ensemble methods combining multiple models
-- [ ] Data augmentation (pitch shifting, time stretching, noise injection)
-- [ ] Real-time audio stream detection
-- [ ] Model compression and optimization for edge deployment
-- [ ] Interactive web interface with Streamlit
+
+
 
 ## References
 
@@ -171,14 +132,7 @@ Deepfake_Audio_Detection/
 - [PyTorch Audio](https://pytorch.org/audio/)
 - [Kaggle Dataset](https://www.kaggle.com/datasets/mohammedabdeldayem/the-fake-or-real-dataset)
 
-## License
-
-This project is provided as-is for educational and research purposes.
 
 ## Author
 
 Arshad Perampalli
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
